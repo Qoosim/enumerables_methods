@@ -45,7 +45,13 @@ module Enumerable
   end
 
   def my_count
-
+    k = 0
+    kounter = 0
+    while k < size
+      kounter += 1 if yield(self[k])
+      k += 1
+    end
+    kounter
   end
 
   # my_map method that output the trasformed of a given array
@@ -59,9 +65,16 @@ module Enumerable
     trans_array
   end
 
-  def my_inject(inital_value)
-    my_each{ |element| inital_value = yield(inital_value, element)}
-    inital_value
+  # my_inject method that prints the sum of all the elements of a given array
+  def my_inject(initial_value)
+
+    my_each{ |element| initial_value = yield(initial_value, element)}
+    initial_value
+
+  end
+
+  def multiply_els(arr)
+    arr.my_inject(1) {|initial, num| initial * num}
   end
 
 end
@@ -70,6 +83,7 @@ array_each = [2, 5, 6, 3, 8]
 array_index = [3, 8, 7, 9]
 array_select = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 array_inject = [4, 6, 9, 6, 2]
+array_count = [1, 2, 4, 2]
 animals = ["cat", "dog", "cow", "ram", "hen"]
 
 array_each.my_each{|k| print "#{k**2} "}
@@ -77,7 +91,9 @@ puts
 array_index.my_each_with_index{|k| print "#{k} "}
 puts
 p array_select.my_select{|even| even}
+p array_count.my_count{|count| count}
 p animals.my_map{|animal| animal.capitalize}
-p array_inject.my_inject(0){|sum, num| sum ++ num}
+p array_inject.my_inject(0){|sum, num| sum += num}
+# p array_inject.multiply_els(1){|initial, num| initial * num}
 
 # rubocop:enable all
