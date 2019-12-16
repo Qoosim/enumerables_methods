@@ -18,4 +18,4 @@
 * Ruby
 ### Author
 ### Qoosim AbdulGhaniyy Adekunle
-** Github: [Qoosim](https://github.com/Qoosim)
+* Github: [Qoosim](https://github.com/Qoosim)
