@@ -10,8 +10,7 @@
   - #map as #my_map
   - #inject as #my_inject 
 
-## Check out the project specification here:
-[The Odin Project](https://www.theodinproject.com/courses/ruby-programming/lessons/advanced-building-blocks#additional-resources)
+### Check out the project specification here: [The Odin Project](https://www.theodinproject.com/courses/ruby-programming/lessons/advanced-building-blocks#additional-resources)
 
 * Assignment 2
 ### Built with
