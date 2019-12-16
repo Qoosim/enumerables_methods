@@ -4,6 +4,8 @@ module Enumerable
 
   # my_each method that prints the square of every elements in an array 
   def my_each
+    return to_enum(:my_each) unless block_given?
+
     k = 0
     while k < size
       yield self[k]
@@ -14,6 +16,8 @@ module Enumerable
 
   # my_each_with_index that prints double of each element of a particular position
   def my_each_with_index
+    return to_enum(:my_each_with_index) unless block_given?
+
     k = 0
     while k < size
       yield(self[k], k)
@@ -23,6 +27,8 @@ module Enumerable
 
   # my_select method that outputs even numbers of the given array
   def my_select
+    return to_enum(:my_select) unless block_given?
+
     k = 0
     array_result = []
     while k < size
@@ -53,6 +59,8 @@ module Enumerable
   end
 
   def my_none?
+    return to_enum(:my_none?) unless block_given?
+
     k = 0
     while k < size
       return false if yield(self[k])
@@ -62,6 +70,8 @@ module Enumerable
   end
 
   def my_count
+    return to_enum(:my_count) unless block_given?
+
     k = 0
     kounter = 0
     while k < size
@@ -73,6 +83,8 @@ module Enumerable
 
   # my_map method that output the trasformed of a given array
   def my_map
+    return to_enum(:my_map) unless block_given?
+
     k = 0
     trans_array = []
     while k < size
@@ -84,6 +96,7 @@ module Enumerable
 
   # my_inject method that prints the sum of all the elements of a given array
   def my_inject(initial_value)
+    return to_enum(:my_inject) unless block_given?
 
     my_each{ |element| initial_value = yield(initial_value, element)}
     initial_value
