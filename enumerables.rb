@@ -32,16 +32,33 @@ module Enumerable
     array_result
   end
 
-  def my_all?
+  def my_all?(*arg)
+    return grep(arg.first).length == size unless arg.empty?
 
+    my_each { |el| return false unless yield(el) } if block_given?
+
+    my_each { |el| return false unless el } unless block_given?
+
+    true
   end
 
-  def my_any?
+  def my_any?(*arg)
+    return !grep(arg.first).empty? unless arg.empty?
 
+    my_each { |el| return true if yield(el) } if block_given?
+
+    my_each { |el| return true if el } unless block_given?
+
+    false
   end
 
   def my_none?
-
+    k = 0
+    while k < size
+      return false if yield(self[k])
+      k += 1
+    end
+    true
   end
 
   def my_count
@@ -73,10 +90,10 @@ module Enumerable
 
   end
 
-  def multiply_els(arr)
-    arr.my_inject(1) {|initial, num| initial * num}
-  end
+end
 
+def multiply_els(arr)
+  arr.my_inject(1) {|initial, num| initial * num}
 end
 
 array_each = [2, 5, 6, 3, 8]
@@ -84,8 +101,11 @@ array_index = [3, 8, 7, 9]
 array_select = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 array_inject = [4, 6, 9, 6, 2]
 array_count = [1, 2, 4, 2]
+array_all = ['animal', 'mamma', 'reptile', 'cat', 'fish']
 animals = ["cat", "dog", "cow", "ram", "hen"]
+my_proc = Proc.new {|k| k*2}
 
+p array_all.my_all?{|word| word.size <= 5}
 array_each.my_each{|k| print "#{k**2} "}
 puts
 array_index.my_each_with_index{|k| print "#{k} "}
@@ -93,7 +113,9 @@ puts
 p array_select.my_select{|even| even}
 p array_count.my_count{|count| count}
 p animals.my_map{|animal| animal.capitalize}
+p array_each.my_map(&my_proc)
 p array_inject.my_inject(0){|sum, num| sum += num}
-# p array_inject.multiply_els(1){|initial, num| initial * num}
+p multiply_els(array_inject)
+
 
 # rubocop:enable all
