@@ -15,6 +15,5 @@
 * Assignment 2
 ### Built with
 * Ruby
-### Author
-### Qoosim AbdulGhaniyy Adekunle
+### Author: Qoosim AbdulGhaniyy Adekunle
 * Github: [Qoosim](https://github.com/Qoosim)
