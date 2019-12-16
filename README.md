@@ -1,4 +1,4 @@
-# Ruby Enumerable methods
+## Ruby Enumerable methods
 
 ### This project rebuilt the following ruby Enumerable methods:
   - #each as #my_each
@@ -10,12 +10,12 @@
   - #map as #my_map
   - #inject as #my_inject 
 
-# Check out the project specification here:
+## Check out the project specification here:
 [The Odin Project](https://www.theodinproject.com/courses/ruby-programming/lessons/advanced-building-blocks#additional-resources)
 
 * Assignment 2
-## Built with
+### Built with
 * Ruby
 ### Author
 ### Qoosim AbdulGhaniyy Adekunle
-### Github Account: [Qoosim](https://github.com/Qoosim)
+** Github: [Qoosim](https://github.com/Qoosim)
