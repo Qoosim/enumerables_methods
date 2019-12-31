@@ -132,5 +132,8 @@ p array_each.my_map(&my_proc)
 p array_inject.my_inject(0){|sum, num| sum += num}
 p multiply_els(array_inject)
 
+p [1, 2, 3, 3].my_all?{ |num| num  < 5 }
+p %w["ant", "bat", "cat", "dog"].my_none?{ |word| word.length < 3}
+
 
 # rubocop:enable all
