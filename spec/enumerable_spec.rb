@@ -1,6 +1,7 @@
 require './lib/enumerables'
 
 RSpec.describe Enumerable do
+
   describe "#my_each" do
     it "returns elements of array if block is given, otherwise enumerator is given " do
     any = 0
@@ -54,6 +55,12 @@ RSpec.describe Enumerable do
       arr = []
       [1, 2, 3, 4].my_map { |x| arr << x*x}
       expect(arr).to eql([1, 4, 9, 16])
+    end
+  end
+
+  describe "#my_inject" do
+    it "returns combined elements of array by applying binary operation specified by block" do
+      expect([4, 5, 6, 7, 8, 9, 10].my_inject(0) { |sum, x| sum + x}).to eql(49)
     end
   end
 
