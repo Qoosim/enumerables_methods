@@ -2,18 +2,15 @@
 
 require './lib/enumerables'
 RSpec.describe Enumerable do
-  let(:arr) = []
+  let(:arr) { [] }
   describe '#my_each' do
-    it 'returns elements of array if block is given, otherwise enumerator is given ' do
-      arr = 0
-      [1, 2, 3, 4, 5].my_each { any += 1 }
-      expect(any).to eql(5)
+    it 'returns elements of array if block is given, otherwise enumerator is returned' do
+      expect([1, 2, 3, 4, 5].my_each { |num| num }).to eql([1, 2, 3, 4, 5])
     end
   end
 
   describe '#my_each_with_index' do
     it 'returns elements numerical position' do
-      arr = []
       [2, 3, 5, 7].my_each_with_index { |_elem, idx| arr << idx }
       expect(arr).to eql([0, 1, 2, 3])
     end
@@ -51,7 +48,6 @@ RSpec.describe Enumerable do
 
   describe '#my_map' do
     it 'returns new array with the results of running block once for every elements in the array' do
-      arr = []
       [1, 2, 3, 4].my_map { |x| arr << x * x }
       expect(arr).to eql([1, 4, 9, 16])
     end
